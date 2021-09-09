@@ -12,9 +12,13 @@ spec:
       labels:
         component: server
     spec:
+      securityContext:
+        runAsUser: 1000
+      imagePullSecrets:
+        - name: acr-auth
       containers:
         - name: server
-          image: avoitov.azurecr.io/server:latest
+          image: avoitov.azurecr.io/server:cb2c_0ef45e12ad1d1d7a63aaffbf38a9d326ea3bc28a
           resources:
             limits:
               memory: '128Mi'
@@ -23,19 +27,20 @@ spec:
             - containerPort: 5000
           env:
             - name: REDIS_HOST
-              value: redis-cluster-ip-service
+              value: redis-cluster-ip-service.default
             - name: REDIS_PORT
               value: '6379'
             - name: PGUSER
               value: postgres
             - name: PGHOST
-              value: postgres-cluster-ip-service
+              value: postgres-cluster-ip-service.default
             - name: PGPORT
               value: '5432'
             - name: PGDATABASE
               value: postgres
             - name: PGPASSWORD
+              #value: P2ssword
               valueFrom:
                 secretKeyRef:
-                  name: pgpassword
-                  key: PGPASSWORD
+                  name: mysecret
+                  key: dbpassword

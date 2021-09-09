@@ -12,15 +12,17 @@ spec:
       labels:
         component: worker
     spec:
+      imagePullSecrets:
+        - name: acr-auth
       containers:
         - name: worker
-          image: avoitov.azurecr.io/worker:latest
+          image: avoitov.azurecr.io/worker:cb2d_e0501def9d211be63d80a63bcc307d22ce423be3
           resources:
             limits:
               memory: '128Mi'
               cpu: '500m'
           env:
             - name: REDIS_HOST
-              value: redis-cluster-ip-service
+              value: redis-cluster-ip-service.default
             - name: REDIS_PORT
               value: '6379'

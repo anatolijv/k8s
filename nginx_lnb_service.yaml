@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: service-lnb-nginx
+  labels:
+    name: service-lnb-nginx
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: fibonachi.5el.com.ua
+    http:
+      paths:
+      - backend:
+          service:
+            name: server-cluster-ip-service
+            port: 
+              number: 5000
+        path: /api/
+        pathType:  ImplementationSpecific
+      - backend:
+          service:
+            name: client-cluster-ip-service
+            port:
+              number: 3000
+        path: /
+        pathType: ImplementationSpecific

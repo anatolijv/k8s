@@ -12,6 +12,8 @@ spec:
       labels:
         component: postgres
     spec:
+      securityContext:
+        runAsUser: 1000
       volumes:
         - name: postgres-storage
           persistentVolumeClaim:
@@ -33,5 +35,5 @@ spec:
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: pgpassword
-                  key: PGPASSWORD
+                  name: mysecret
+                  key: pgpassword

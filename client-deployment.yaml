@@ -12,6 +12,8 @@ spec:
       labels:
         component: web
     spec:
+      imagePullSecrets:
+        - name: acr-auth
       containers:
         - name: client
           image: avoitov.azurecr.io/client:latest
