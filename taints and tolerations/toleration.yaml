@@ -8,7 +8,7 @@ spec:
   tolerations:
     # если существует ключ app, не запускать под на этой ноде
   - key: app
-    operator: Exist
+    operator: Exists
     effect: NoSchedule
     # при наличии ключа env и значении prod - не запускать под на ноде, и убрать, если такой существует
   - key: env
