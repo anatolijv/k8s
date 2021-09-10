@@ -1,0 +1,13 @@
+kubectl taint node <node_name> <key>=<value>:tailt_effect
+NoSchedule pods without toleration will not be scheduled
+PreferNoSchedule schedule only if no other node available
+NoExecute: pod without toleration will not be scheduled and evicted if already running on th node
+
+- key: Taint key name to mathch
+  operator: Equal (default) or Exist (Any value)
+  value: Taint value to mathch
+  effect: Taint effect to mathch
+
+
+kubectl taint node worker1 app=frontend:NoSchedule
+kubectl taint node worker2 app=backend:NoSchedule
