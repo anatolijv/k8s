@@ -1,0 +1,26 @@
+apiVersoin: v1
+kind: Pod
+metadata:
+  name: myapp-toleration
+  labels:
+    name: myapp-toleration
+spec:
+  tolerations:
+    # если существует ключ app, не запускать под на этой ноде
+  - key: app
+    operator: Exist
+    effect: NoSchedule
+    # при наличии ключа env и значении prod - не запускать под на ноде, и убрать, если такой существует
+  - key: env
+    operator: Equal
+    value: pord
+    effect: NoExecute
+  containers:
+  - name: myapp-toleration
+    image: centos:7.9
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
