@@ -3,6 +3,7 @@ kind: Pod
 metadata:
   labels:
     os: centos
+    app: frontend
   name: toleration-app
   namespace: default
 spec:
