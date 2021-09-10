@@ -17,7 +17,7 @@ spec:
     effect: NoExecute
   containers:
   - name: myapp-toleration
-    image: centos:7.9
+    image: centos
     resources:
       limits:
         memory: "128Mi"
