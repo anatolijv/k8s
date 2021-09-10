@@ -35,7 +35,7 @@ spec:
     tolerationSeconds: 300
   - effect: NoExecute
     key: app
-    operator: Exist
+    operator: Exists
   - effect: NoSchedule
     key: app
     value: backend
