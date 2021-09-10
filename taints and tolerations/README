@@ -1,3 +1,5 @@
+наличие taint, должно совподать с толерантностью на поде
+
 kubectl taint node <node_name> <key>=<value>:tailt_effect
 NoSchedule pods without toleration will not be scheduled
 PreferNoSchedule schedule only if no other node available
