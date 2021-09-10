@@ -1,26 +1,41 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: myapp-toleration
   labels:
-    name: myapp-toleration
+    os: centos
+  name: toleration-app
+  namespace: default
 spec:
-  tolerations:
-    # если существует ключ app, не запускать под на этой ноде
-  - key: app
-    operator: Exists
-    effect: NoSchedule
-    # при наличии ключа env и значении prod - не запускать под на ноде, и убрать, если такой существует
-  - key: env
-    operator: Equal
-    value: pord
-    effect: NoExecute
+  hostname: toleration-app
   containers:
-  - name: myapp-toleration
-    image: centos
+  - image: centos:latest
+    imagePullPolicy: Always
+    name: toleration-app
     resources:
       limits:
-        memory: "128Mi"
-        cpu: "500m"
-    ports:
-      - containerPort: 80
+        memory: '128Mi'
+        cpu: '250m'
+    command: ["/bin/sh"]
+    args: ["-c", "while true; do echo hello; sleep 10;done"]
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: worker2.5el.com.ua
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: app=frontend
+    operator: Exist
+  - effect: NoSchedule
+    key: app
+    value: backend
