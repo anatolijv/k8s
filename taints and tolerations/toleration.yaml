@@ -34,9 +34,9 @@ spec:
     key: node.kubernetes.io/unreachable
     operator: Exists
     tolerationSeconds: 300
-  - effect: NoExecute
-    key: app
-    operator: Exists
-  - effect: NoSchedule
-    key: app
-    value: backend
+  #- effect: NoExecute
+  #  key: app
+  #  operator: Exists
+  #- effect: NoSchedule
+  #  key: app
+  #  value: backend
