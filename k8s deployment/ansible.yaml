@@ -14,6 +14,8 @@ spec:
       containers:
       - name: ansible
         image: python:latest
+        command:
+          - "python"
         resources:
           limits:
             memory: "128Mi"
