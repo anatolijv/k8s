@@ -1,0 +1,15 @@
+- name: Mac address
+  hosts: all
+  vars:
+  tasts:
+    - name: Get mac address table
+      community.ciscosmb.command:
+        commands:
+          - show mac address table
+      register: output
+    - name: list output
+      debug:
+        mesg:
+          - '{{ output }}'
+       
+  

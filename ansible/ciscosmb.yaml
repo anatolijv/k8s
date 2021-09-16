@@ -1,0 +1,41 @@
+- name: Gather Facts
+  gather_facts: no
+  hosts: all
+  vars:
+   - configs_dir: "/root/configs"
+  tasks:
+    - name: CiscoSMB - Gather Facts - subset default
+      community.ciscosmb.facts:
+        gather_subset:
+          - all
+    - name: CiscoSMB - Gather Facts - sybset config
+      community.ciscosmb.facts:
+        gather_subset:
+          - config
+
+    - name: Create configuration directory
+      local_action: file path={{ configs_dir }} state=directory
+      run_once: true
+      check_mode: no
+      changed_when: no
+
+# ниже описана задача для выполнения комманд на коммутаторе 
+    - name: Execute command on switch
+      community.ciscosmb.command:
+        commands:
+          - show version
+          - configure t
+          - interface FastEthernet 1
+          - power inline never
+          - power inline auto
+      register: out
+
+# вывод результата первовй комманды в консоль
+    - name: Show version results
+      debug:
+        msg:
+          - '{{ out.stdout_lines[0] }}'
+          
+# сохранение конфига 
+    - name: Save runnig config
+      local_action: copy content={{ ansible_net_config }} dest={{ configs_dir }}/{{ inventory_hostname }}_net_config
