@@ -4,7 +4,7 @@ pipeline {
         stage('Build'){
             steps {
                 echo "Hello world"
-                docker build -f Dockerfile .
+                sh 'docker build -f Dockerfile .'
             }
         }
     }
