@@ -4,3 +4,10 @@ openssl genrsa -out user.key 2048
 openssl req -new -key user1.key -out user1.csr
 #генерация выдача сертификата клиенту, самоподписным центром сертефикации кубернетс
 openssl x509 -req -in user1.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out user1.crt -days 500
+
+#добавить в конфиг адрес кластера, сертификат, 
+kubectl config set-cluster clustername --embed-certs=true --server=$kube-api-server:$port --certificate-authority=$cube_ca.pem
+#добавить в конфиг пользователя с сертификатами и ключем
+kubectl config set-credentials user --client-certificate=./user.crt --client-key=./user.key
+#добавить конфиг контекст, под которым пользователь будет подключатся к кластеру
+kubectl config set-context alice-staging --cluster=clustername --user=user --namespace=default
