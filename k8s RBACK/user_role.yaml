@@ -1,0 +1,21 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: defalut
+  name: user_default_role
+rules:
+- apiGroups: 
+    - ""
+  resources: 
+    - "deployments"
+    - "pods"
+    -  "services"
+  verbs:
+    - "get"
+    - "watch"
+    - "create"
+    - "delete"
+    - "patch"
+    - "update"
+    - "list"
+

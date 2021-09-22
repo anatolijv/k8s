@@ -1,0 +1,6 @@
+#генерация закрытого ключа клиента
+openssl genrsa -out user.key 2048
+#генерация запроса сертификата клиента
+openssl req -new -key user1.key -out user1.csr
+#генерация выдача сертификата клиенту, самоподписным центром сертефикации кубернетс
+openssl x509 -req -in user1.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out user1.crt -days 500
