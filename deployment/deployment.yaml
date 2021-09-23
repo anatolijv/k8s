@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: centos
-        image: centos:7.2
+        image: centos:72
         command: [ "/bin/bash" ]
         args: ["-c", "while true; do echo 1; done"]
         resources:
