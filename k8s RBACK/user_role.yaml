@@ -5,7 +5,7 @@ metadata:
   name: user_default_role
 rules:
 - apiGroups: 
-    - ""
+    - "*"
     - "apps"
   resources: 
     - "deployments"
