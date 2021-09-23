@@ -17,7 +17,8 @@ spec:
         command:
           - "/bin/bash"
         args:
-          - "-c while true; do echo 1; done"
+          - "-c"
+          - "while true; do echo 1; done"
         resources:
           limits:
             memory: "128Mi"
