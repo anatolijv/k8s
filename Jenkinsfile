@@ -7,28 +7,17 @@ pipeline {
                     echo 'Hello World'
                 }
             }
-        agent {
-            kubernetes {
-            defaultContainer 'Jenkins'
-            namespace 'default'
-            }
-        }   
-        post {
-            cleanup {
-                cleanWs()
-            }
-
-            failure {
-                steps {
-                    script {
-                        if ( JOB_NAME.contains("myjob") ) {
-                        // do something
-                    }
+            agent {
+                kubernetes {
+                defaultContainer 'Jenkins'
+                namespace 'default'
                 }
             }
-        }
-            // No post conditions specified
-        }
+            post {
+                cleanup {
+                    cleanWs()
+                }
+            }  
         }
     }
 }
