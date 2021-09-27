@@ -3,14 +3,14 @@ pipeline {
     stages {
         stage('stage') {
             steps {
-                step {
+                step {                    
                     echo 'Hello World'
                 }
-            }
-            agent {
-                kubernetes {
-                defaultContainer 'Jenkins'
-                namespace 'default'
+                agent {
+                    kubernetes {
+                    defaultContainer 'Jenkins'
+                    namespace 'default'
+                    }
                 }
             }
             post {
