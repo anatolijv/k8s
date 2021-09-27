@@ -1,18 +1,17 @@
 pipeline { 
-    agent any
+agent {
+        kubernetes {
+        defaultContainer 'Jenkins'
+        namespace 'default'
+        }
+    }
     stages {
         stage('stage') {
             steps {
                 step {                    
                     echo 'Hello World'
+                   }
                 }
-                agent {
-                    kubernetes {
-                    defaultContainer 'Jenkins'
-                    namespace 'default'
-                    }
-                }
-            }
             post {
                 cleanup {
                     cleanWs()
