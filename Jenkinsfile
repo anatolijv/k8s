@@ -1,7 +1,7 @@
 node {    
     stages {
         stage('stage') {
-            steps {
+            step {
                 echo 'Hello World'
             }
 
