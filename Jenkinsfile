@@ -1,6 +1,8 @@
 stage('stage') {
   steps {
-    sh ping google.com
+    step {
+        sh ping google.com
+    }
   }
 
   agent {
