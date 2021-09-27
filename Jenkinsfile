@@ -7,9 +7,11 @@ pipeline {
     }   
     stages {
         stage('stage') {
-            step {
-                echo 'Hello World'
-            }        
+            seteps {
+                step {
+                    echo 'Hello World'
+                }
+            }
         post {
             // No post conditions specified
         }
