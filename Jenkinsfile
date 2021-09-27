@@ -14,6 +14,19 @@ pipeline {
             }
         }   
         post {
+            cleanup {
+                cleanWs()
+            }
+
+            failure {
+                steps {
+                    script {
+                        if ( JOB_NAME.contains("myjob") ) {
+                        // do something
+                    }
+                }
+            }
+        }
             // No post conditions specified
         }
         }
