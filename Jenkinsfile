@@ -1,9 +1,9 @@
 node {    
     stages {
         stage('stage') {
-        steps {
-            echo 'Hello World'
-        }
+            steps {
+                echo 'Hello World'
+            }
 
         agent {
             kubernetes {
