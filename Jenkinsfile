@@ -1,10 +1,5 @@
 pipeline { 
-    agent {
-            kubernetes {
-            defaultContainer 'Jenkins'
-            namespace 'default'
-            }
-    }   
+    agent all
     stages {
         stage('stage') {
             seteps {
@@ -12,6 +7,12 @@ pipeline {
                     echo 'Hello World'
                 }
             }
+        agent {
+            kubernetes {
+            defaultContainer 'Jenkins'
+            namespace 'default'
+            }
+        }   
         post {
             // No post conditions specified
         }
