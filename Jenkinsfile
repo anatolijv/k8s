@@ -1,18 +1,20 @@
-stage('stage') {
-  steps {
-    step {
-        sh ping google.com
-    }
-  }
+node {    
+    stages {
+        stage('stage') {
+        steps {
+            echo 'Hello World'
+        }
 
-  agent {
-    kubernetes {
-      defaultContainer 'Jenkins'
-      namespace 'default'
-    }
-  }
+        agent {
+            kubernetes {
+            defaultContainer 'Jenkins'
+            namespace 'default'
+            }
+        }
 
-  post {
-    // No post conditions specified
-  }
+        post {
+            // No post conditions specified
+        }
+        }
+    }
 }
