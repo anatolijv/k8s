@@ -7,7 +7,7 @@ pipeline{
     stages{
         stage("Build") {
             steps {
-                step {
+                step("Execute command") {
                     sh echo $JENKINS_SECRET
                 }
             }
