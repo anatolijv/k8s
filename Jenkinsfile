@@ -1,6 +1,8 @@
 pipeline{
     agent{
-        kubernetes
+        kubernetes {
+            
+        }
     }
     stages{
         stage("Build") {
