@@ -1,22 +1,12 @@
-pipeline { 
-agent {
-        kubernetes {
-        defaultContainer 'Jenkins'
-        namespace 'default'
-        }
+pipeline{
+    agent{
+        kubernetes
     }
-    stages {
-        stage('stage') {
+    stages{
+        stage("Build") {
             steps {
-                step {                    
-                    echo 'Hello World'
-                   }
-                }
-            post {
-                cleanup {
-                    cleanWs()
-                }
-            }  
+                echo "build on kubernetes"
+            }
         }
     }
 }
