@@ -1,10 +1,10 @@
 pipeline{
     agent any
     stages{
-        agent{
-            kubernetes {}
-            }   
         stage("Build") {
+            agent{
+                kubernetes {}
+            }   
             steps {
                 sh "apt list --installed"
             }
