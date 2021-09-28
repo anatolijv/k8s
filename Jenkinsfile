@@ -7,7 +7,7 @@ pipeline{
     stages{
         stage("Build") {
             steps {
-                sh "env"
+                sh "ls -l /etc"
             }
         }
     }
