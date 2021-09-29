@@ -6,7 +6,7 @@ pipeline{
                 kubernetes {
                     yaml """
                     apiVersion: v1
-                    kind:
+                    kind: Pod
                     metadata:
                     spec:
                       containers:
