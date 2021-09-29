@@ -4,7 +4,6 @@ pipeline{
         stage("Build") {
             agent{
                 kubernetes {
-                    cloud: kubernetes
                     yaml """
                     apiVersion: v1
                     kind:
