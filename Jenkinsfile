@@ -14,6 +14,8 @@ pipeline{
                           image: "jenkins/inbound-agent:4.3-4"
                         - name: "python"
                           image: python:latest
+                          command:
+                          - ls -l /home/jenkins/agent
                     """
                 }
             }   
