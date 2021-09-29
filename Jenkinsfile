@@ -15,7 +15,7 @@ pipeline{
                         - name: "python"
                           image: python:latest
                           command:
-                          - ls -l /home/jenkins/agent
+                          - ls -l /home/jenkins/agent/
                     """
                 }
             }   
