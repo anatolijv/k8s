@@ -10,9 +10,6 @@ pipeline{
                     metadata:
                     spec:
                       containers:
-                        - name: "jnlp"
-                          image: "jenkins/inbound-agent:4.3-4"
-                          tty: true
                         - name: "python"
                           image: python:latest
                           command:
