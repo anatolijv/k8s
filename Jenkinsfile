@@ -19,7 +19,11 @@ pipeline{
                 }
             }   
             steps {
-                sh "apt list --installed"
+                container(python) {
+                    ansiColor('xterm') {
+                        sh "apt list --installed"
+                    }
+                }
             }
         }
     }
