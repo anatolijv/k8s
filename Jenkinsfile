@@ -15,7 +15,7 @@ pipeline{
                         - name: "python"
                           image: python:latest
                           command:
-                          - ls -l /home/jenkins/agent/
+                          - sh -c 'while true; do echo 10; done;'
                     """
                 }
             }   
