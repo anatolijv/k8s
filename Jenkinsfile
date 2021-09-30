@@ -21,7 +21,7 @@ pipeline{
             }   
             steps {
                 container("python") {
-                    sh "python3 -v"
+                    sh "python3 sha.py"
                 }
             }
         }
