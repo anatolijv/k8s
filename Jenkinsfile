@@ -21,7 +21,7 @@ pipeline{
             }   
             steps {
                 container("python") {
-                    sh "apt list --installed"
+                    sh "python3 -v"
                 }
             }
         }
