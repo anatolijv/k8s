@@ -21,6 +21,7 @@ pipeline{
             }   
             steps {
                 container("python") {
+                    sh "python -m pip install --upgrade pip"
                     sh "python3 sha.py 'Python version'"
                 }
             }
