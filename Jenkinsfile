@@ -21,7 +21,7 @@ pipeline{
             }   
             steps {
                 container("python") {
-                    ansiColor("xterm") {
+                    ansiColor(xterm) {
                         sh "apt list --installed"
                     }
                 }
