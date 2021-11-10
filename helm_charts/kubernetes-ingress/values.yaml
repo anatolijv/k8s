@@ -134,7 +134,7 @@ controller:
   ## ref: https://kubernetes.io/docs/concepts/services-networking/ingress/#default-ingress-class
   ## Note: Uses ingressClass as name for the Ingress Class object if enabled
   ingressClassResource:
-    enabled: false
+    enabled: true
     default: false
     parameters: {}
 
@@ -367,7 +367,7 @@ controller:
     # externalTrafficPolicy: "Local"
 
     ## Expose service via external IPs that route to one or more cluster nodes
-    externalIPs: []
+    externalIPs: [172.50.0.10, 172.50.0.11, 172.50.0.12, 172.50.0.13]
 
     ## LoadBalancer IP
     ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer
