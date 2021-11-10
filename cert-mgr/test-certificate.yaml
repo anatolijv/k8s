@@ -1,11 +1,11 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: example-com
-  namespace: sandbox
+  name: viaf.pp.ua
+  namespace: default
 spec:
   # Secret names are always required.
-  secretName: example-com-tls
+  secretName: viaf.pp.ua
 
   # Secret template is optional. If set, these annotations
   # and labels will be copied to the secret named example-com-tls.
@@ -14,21 +14,21 @@ spec:
   # is created or renewed. Currently labels and annotations can only be added, but not removed. Removing any 
   # labels or annotations from the template or removing the template itself will have no effect.
   # See https://github.com/jetstack/cert-manager/issues/4292.
-  secretTemplate:
-    annotations:
-      my-secret-annotation-1: "foo"
-      my-secret-annotation-2: "bar"
-    labels:
-      my-secret-label: foo
+  #secretTemplate:
+  #  annotations:
+  #    my-secret-annotation-1: "foo"
+  #    my-secret-annotation-2: "bar"
+  #  labels:
+  #    my-secret-label: foo
 
   duration: 2160h # 90d
   renewBefore: 360h # 15d
   subject:
     organizations:
-      - jetstack
+      - Anatolii Voitov
   # The use of the common name field has been deprecated since 2000 and is
   # discouraged from being used.
-  commonName: example.com
+  commonName: viaf.pp.ua
   isCA: false
   privateKey:
     algorithm: RSA
@@ -39,15 +39,15 @@ spec:
     - client auth
   # At least one of a DNS Name, URI, or IP address is required.
   dnsNames:
-    - example.com
-    - www.example.com
-  uris:
-    - spiffe://cluster.local/ns/sandbox/sa/example
-  ipAddresses:
-    - 192.168.0.5
+    - viaf.pp.ua
+    - www.viaf.pp.ua
+  #uris:
+  #  - spiffe://cluster.local/ns/sandbox/sa/example
+  #ipAddresses:
+  #  - 192.168.0.5
   # Issuer references are always required.
   issuerRef:
-    name: ca-issuer
+    name: letsencrypt-staging
     # We can reference ClusterIssuers by changing the kind here.
     # The default value is Issuer (i.e. a locally namespaced Issuer)
     kind: Issuer
