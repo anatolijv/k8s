@@ -1,0 +1,12 @@
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServer
+metadata:
+  name: virtualserver
+spec:
+  host: viaf.pp.ua
+  routes:
+  - path: /
+    action:
+      redirect:
+        url: http://google.com
+        code: 301
