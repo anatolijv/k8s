@@ -3,7 +3,7 @@ kind: IPPool
 metadata:
   name: pool2
 spec:
-  cidr: 192.168.192.0/19
+  cidr: 10.52.0.0/16
   ipipMode: Never
   natOutgoing: true
   disabled: true
